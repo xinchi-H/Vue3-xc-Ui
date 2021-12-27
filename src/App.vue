@@ -1,15 +1,18 @@
 <template>
-  <div>hi</div>
-  <xc />
+  <div>
+    导航栏
+    |
+    <router-link to="/">Xc</router-link>
+    |
+    <router-link to="/xxx">Xc2</router-link>
+  </div>
+  <hr>
+  <router-view />
 </template>
 
 <script>
-import Xc from './components/xc.vue';
 
 export default {
   name: 'App',
-  components: {
-    Xc,
-  }
 }
 </script>
