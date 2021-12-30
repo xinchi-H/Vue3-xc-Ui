@@ -1,16 +1,8 @@
 <template>
-  <div>
-    导航栏
-    |
-    <router-link to="/">Xc</router-link>
-    |
-    <router-link to="/xxx">Xc2</router-link>
-  </div>
-  <hr>
   <router-view />
 </template>
 
-<script>
+<script lang="ts">
 
 export default {
   name: 'App',
