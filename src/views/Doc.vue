@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <topnav />
+  <div class="layout">
+    <topnav class="nav" />
     <div class="content">
       <aside v-if="menuVisible">
         <h2>组件列表</h2>
@@ -40,23 +40,67 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.layout {
+  display: flex;
+  flex-direction: column;
+
+  > .nav {
+    flex-shrink: 0;
+  }
+  
+  > .content {
+    flex-grow: 1;
+    padding-top: 60px;
+    padding-left: 156px;
+    @media (max-width: 500px) {
+      padding-left: 0;
+    }
+  }
+}
+
+.content {
+  display: flex;
+
+  > aside {
+    flex-shrink: 0;
+  }
+
+  > main {
+    flex-grow: 1;
+    padding: 16px;
+    background: lightgreen;
+  }
+}
+
 aside {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 150px;
+  height: 100%;
   padding: 16px;
+  padding-top: 70px;
   background: lightblue;
+
   > h2 {
     margin-bottom: 4px;
   }
+
   > ol {
     > li {
       padding: 4px 0;
     }
   }
+
   @media (max-width: 500px) {
     position: fixed;
     top: 0;
     left: 0;
-    padding-top: 70px;    
+    padding-top: 70px;
   }
+}
+
+main {
+  overflow: auto;
 }
 </style> 

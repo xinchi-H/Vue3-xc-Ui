@@ -17,26 +17,30 @@ import { inject, Ref } from "vue"
 
 export default {
   setup() {
-    const menuVisible = inject<Ref<boolean>>('menuVisible')
+    const menuVisible = inject<Ref<boolean>>('menuVisible');
 
     const toggleMenu = () => {
       menuVisible.value = !menuVisible.value;
     }
 
-    return {toggleMenu}
+    return { toggleMenu };
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .topnav {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   padding: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 10;
   background: pink;
+
   > .logo {
     max-width: 6em;
     margin-right: auto;
