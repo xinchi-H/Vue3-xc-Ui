@@ -1,56 +1,14 @@
 <template>
-<div>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-  <p>Switch的文档</p>
-</div>
+  <div>
+    <Switch />
+  </div>
 </template>
 
 <script lang="ts">
-import { inject, Ref } from "vue";
+import Switch from '../lib/switch.vue'
 
 export default {
-  setup() {
-    const menuVisible = inject<Ref<boolean>>('menuVisible');
-    return { menuVisible };
-  }
+  components: { Switch },
 }
 </script>
 
