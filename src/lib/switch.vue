@@ -5,14 +5,13 @@
   >
     <span></span>
   </button>
-  <div>{{ value }}</div>
 </template>
 
 <script lang="ts">
 /**
  * Switch 组件
  */
-import { ref } from 'vue';
+import { ref } from "vue";
 
 export default {
   props: {
@@ -23,9 +22,9 @@ export default {
     const toggle = () => {
       context.emit('update:value', !props.value);
     }
-    return {toggle};
-  }
-}
+    return { toggle };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -39,28 +38,35 @@ button {
   border: none;
   border-radius: $h / 2;
   background: grey;
-}
 
-span {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  height: $h2;
-  width: $h2;
-  background: white;
-  border-radius: $h2 / 2;
-  transition: left 250ms;
-}
+  > span {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    height: $h2;
+    width: $h2;
+    background: white;
+    border-radius: $h2 / 2;
+    transition: left 250ms;
+  }
+  &.checked {
+    background: #1890ff;
+    
+    > span {
+     left: calc(100% - #{$h2} - 2px);
+    }
+  }
+ 
+  &:focus {
+    outline: none;
+  }
 
-button.checked {
-  background: blue;
-}
+  &:active {
+    > span { width: $h2 + 4px; }
+  }
 
-button.checked > span {
-   left: calc(100% - #{$h2} - 2px);
-}
-
-button:focus {
-  outline: none;
+  &.checked:active {
+    > span { width: $h2 + 4px; margin-left: -4px; }
+  }
 }
 </style>
