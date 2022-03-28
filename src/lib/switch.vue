@@ -38,7 +38,7 @@ $h2: $h - 4px;
   width: $h * 2;
   border: none;
   border-radius: $h / 2;
-  background: grey;
+  background: #bfbfbf;
 
   > span {
     position: absolute;
@@ -48,7 +48,7 @@ $h2: $h - 4px;
     width: $h2;
     background: white;
     border-radius: $h2 / 2;
-    transition: left 250ms;
+    transition: all 250ms;
   }
   &.xc-checked {
     background: #1890ff;
