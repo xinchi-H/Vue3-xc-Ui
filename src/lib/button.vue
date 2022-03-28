@@ -57,5 +57,26 @@ $radius: 4px;
   &::-moz-focus-inner {
     border: 0;
   }
+
+  &.xc-theme-link{
+    border-color: transparent;
+    box-shadow: none;
+    color: $blue;
+    background: none;
+
+    &:hover,&:focus{
+      color: lighten($blue, 10%);
+    }
+  }
+
+  &.xc-theme-text{
+    border-color: transparent;
+    box-shadow: none;
+    color: inherit;
+
+    &:hover,&:focus{
+      background: darken(white, 5%);;
+    }
+  }
 }
 </style>
