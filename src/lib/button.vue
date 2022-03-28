@@ -1,7 +1,7 @@
 <template>
   <button
     class="xc-button"
-    :class="`theme-${theme}`"
+    :class="`xc-theme-${theme}`"
   >
     <slot />
   </button>
@@ -18,7 +18,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 $h: 32px;
 $border-color: #d9d9d9;
 $color: #333;
@@ -53,7 +53,7 @@ $radius: 4px;
   &:focus {
     outline: none;
   }
-
+  // 兼容Firefox
   &::-moz-focus-inner {
     border: 0;
   }
