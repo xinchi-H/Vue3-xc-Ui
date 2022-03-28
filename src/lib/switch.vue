@@ -12,7 +12,6 @@
 /**
  * Switch 组件
  */
-import { ref } from "vue";
 
 export default {
   props: {
