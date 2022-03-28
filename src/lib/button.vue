@@ -2,6 +2,7 @@
   <button
     class="xc-button"
     :class="classes"
+    :disabled="disabled"
   >
     <slot />
   </button>
@@ -22,6 +23,10 @@ export default {
     level: {
       type: String,
       default: "normal",
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
   },
   setup(props) {
@@ -45,6 +50,7 @@ $color: #333;
 $blue: #40a9ff;
 $radius: 4px;
 $red: red;
+$grey: grey;
 
 .xc-button {
   box-sizing: border-box;
@@ -161,6 +167,24 @@ $red: red;
       &:hover, &:focus {
         color: darken($red, 10%);
       }
+    }
+  }
+
+  &.xc-theme-button {
+    &[disabled] {
+      cursor: not-allowed;
+      color: $grey;
+
+      &:hover {
+        border-color: $grey;
+      }
+    }
+  }
+
+  &.xc-theme-link, &.xc-theme-text {
+    &[disabled] {
+      cursor: not-allowed;
+      color: $grey;
     }
   }
 }
