@@ -1,6 +1,7 @@
 <template>
   <button
-    :class="{checked: value}"
+    class="xc-switch"
+    :class="{'xc-checked': value}"
     @click="toggle"
   >
     <span></span>
@@ -31,7 +32,7 @@ export default {
 $h: 22px;
 $h2: $h - 4px;
 
-button {
+.xc-switch {
   position: relative;
   height: $h;
   width: $h * 2;
@@ -49,7 +50,7 @@ button {
     border-radius: $h2 / 2;
     transition: left 250ms;
   }
-  &.checked {
+  &.xc-checked {
     background: #1890ff;
     
     > span {
@@ -65,7 +66,7 @@ button {
     > span { width: $h2 + 4px; }
   }
 
-  &.checked:active {
+  &.xc-checked:active {
     > span { width: $h2 + 4px; margin-left: -4px; }
   }
 }
