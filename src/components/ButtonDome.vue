@@ -57,11 +57,11 @@
 </template>
 
 <script lang="ts">
-import buttonVue from "../lib/button.vue";
+import Button from "../lib/button.vue";
 
  export default {
    components: {
-     Button: buttonVue
+     Button,
    },
    setup() {
      const onClick = () => {
