@@ -1,15 +1,20 @@
 <template>
   <div class="xc-dialog-overlay" />
   <div class="xc-dialog-wrapper">
-    <header>标题</header>
-    <main>
-      <p>第一行字</p>
-      <p>第二行字</p>
-    </main>
-    <footer>
-      <Button>OK</Button>
-      <Button>Cancel</Button>
-    </footer>
+    <div class="xc-dialog">
+      <header>
+        标题
+        <span class="xc-dialog-close" />
+      </header>
+      <main>
+        <p>第一行字</p>
+        <p>第二行字</p>
+      </main>
+      <footer>
+        <Button level="main">OK</Button>
+        <Button>Cancel</Button>
+      </footer>
+    </div>
   </div>
 </template>
 
@@ -26,6 +31,79 @@ export default {
 }
 </script>
 
-<!--<style lang="scss" scoped>-->
+<style lang="scss" scoped>
+$radius: 4px;
+$border-color: #d9d9d9;
 
-<!--</style>-->
+.xc-dialog {
+  min-width: 15em;
+  max-width: 90%;
+  border-right: $radius;
+  box-shadow: 0 0 3px fade_out(black, 0.5);
+  background: white;
+
+  &-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: fade_out(black, 0.5);
+    z-index: 10;
+  }
+
+  &-wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 11;
+  }
+
+  > header {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+    border-bottom: 1px solid $border-color;
+  }
+
+  > main {
+    padding: 12px 16px;
+  }
+
+  > footer {
+    padding: 12px 16px;
+    text-align: right;
+    border-top: 1px solid $border-color;
+  }
+
+  &-close {
+    position: relative;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      height: 1px;
+      background: black;
+      width: 100%;
+      top: 50%;
+      left: 50%;
+    }
+
+    &::before {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    &::after {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+  }
+}
+</style>
