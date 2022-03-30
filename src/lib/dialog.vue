@@ -1,11 +1,17 @@
 <template>
   <template v-if="visible">
-    <div class="xc-dialog-overlay" />
+    <div
+      class="xc-dialog-overlay"
+      @click="onClickOverlay"
+    />
     <div class="xc-dialog-wrapper">
       <div class="xc-dialog">
         <header>
           标题
-          <span class="xc-dialog-close" />
+          <span
+            class="xc-dialog-close"
+            @click="close"
+          />
         </header>
         <main>
           <p>第一行字</p>
@@ -13,7 +19,7 @@
         </main>
         <footer>
           <Button level="main">OK</Button>
-          <Button>Cancel</Button>
+          <Button @click="close">Cancel</Button>
         </footer>
       </div>
     </div>
@@ -32,9 +38,25 @@ export default {
       type: Boolean,
       default: false,
     },
+    closeOnClickOverlay: {
+      type: Boolean,
+      default: false,
+    },
   },
   components: {
     Button,
+  },
+  emits: ['update:visible'],
+  setup(props, {emit}) {
+    const close = () => {
+      emit('update:visible', false);
+    };
+    const onClickOverlay = () => {
+      if (props.closeOnClickOverlay) {
+        close();
+      }
+    }
+    return {close, onClickOverlay};
   },
 }
 </script>
