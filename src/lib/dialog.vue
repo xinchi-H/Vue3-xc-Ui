@@ -7,15 +7,14 @@
     <div class="xc-dialog-wrapper">
       <div class="xc-dialog">
         <header>
-          标题
+          {{ title }}
           <span
             class="xc-dialog-close"
             @click="close"
           />
         </header>
         <main>
-          <p>第一行字</p>
-          <p>第二行字</p>
+          <slot />
         </main>
         <footer>
           <Button
@@ -42,6 +41,10 @@ export default {
     visible: {
       type: Boolean,
       default: false,
+    },
+    title: {
+      type: String,
+      default: '提示',
     },
     closeOnClickOverlay: {
       type: Boolean,

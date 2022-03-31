@@ -10,7 +10,14 @@
     v-model:visible="x"
     :ok="f1"
     :cancel="f2"
-  />
+  >
+    <div>
+      内容1111
+    </div>
+    <div>
+      内容2222
+    </div>
+  </Dialog>
 </template>
 
 <script lang="ts">
