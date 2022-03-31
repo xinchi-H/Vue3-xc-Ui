@@ -11,12 +11,17 @@
     :ok="f1"
     :cancel="f2"
   >
-    <div>
-      内容1111
-    </div>
-    <div>
-      内容2222
-    </div>
+    <template v-slot:header>
+      <strong>提示</strong>
+    </template>
+    <template v-slot:content>
+      <div>
+        内容1111
+      </div>
+      <div>
+        内容2222
+      </div>
+    </template>
   </Dialog>
 </template>
 
