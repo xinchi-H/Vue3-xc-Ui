@@ -8,6 +8,8 @@
   </Button>
   <Dialog
     v-model:visible="x"
+    :ok="f1"
+    :cancel="f2"
   />
 </template>
 
@@ -25,10 +27,19 @@ export default {
     const x = ref(false);
     const toggle = () => {
       x.value = !x.value;
-    }
+    };
+    const f1 = () => {
+      console.log(1111);
+      return false;
+    };
+    const f2 = () => {
+      console.log(2222);
+    };
     return {
       x,
       toggle,
+      f1,
+      f2,
     };
   }
 }
