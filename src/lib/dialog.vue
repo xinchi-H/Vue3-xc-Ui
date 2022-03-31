@@ -1,32 +1,34 @@
 <template>
   <template v-if="visible">
-    <div
-      class="xc-dialog-overlay"
-      @click="onClickOverlay"
-    />
-    <div class="xc-dialog-wrapper">
-      <div class="xc-dialog">
-        <header>
-          <slot name="header"/>
-          <span
-            class="xc-dialog-close"
-            @click="close"
-          />
-        </header>
-        <main>
-          <slot name="content"/>
-        </main>
-        <footer>
-          <Button
-            level="main"
-            @click="ok"
-          >
-            OK
-          </Button>
-          <Button @click="cancel">Cancel</Button>
-        </footer>
+    <Teleport to="body">
+      <div
+        class="xc-dialog-overlay"
+        @click="onClickOverlay"
+      />
+      <div class="xc-dialog-wrapper">
+        <div class="xc-dialog">
+          <header>
+            <slot name="header" />
+            <span
+              class="xc-dialog-close"
+              @click="close"
+            />
+          </header>
+          <main>
+            <slot name="content" />
+          </main>
+          <footer>
+            <Button
+              level="main"
+              @click="ok"
+            >
+              OK
+            </Button>
+            <Button @click="cancel">Cancel</Button>
+          </footer>
+        </div>
       </div>
-    </div>
+    </Teleport>
   </template>
 </template>
 
