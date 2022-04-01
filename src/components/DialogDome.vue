@@ -30,8 +30,8 @@
 <script lang="ts">
 import { ref, h } from "vue";
 import { openDialog } from "../lib/openDialog";
-import Dialog from "../lib/dialog.vue";
-import Button from "../lib/button.vue";
+import Dialog from "../lib/Dialog.vue";
+import Button from "../lib/Button.vue";
 
 export default {
   components: {
