@@ -16,10 +16,10 @@
     </template>
     <template v-slot:content>
       <div>
-        内容1111
+        内容1
       </div>
       <div>
-        内容2222
+        内容2
       </div>
     </template>
   </Dialog>
