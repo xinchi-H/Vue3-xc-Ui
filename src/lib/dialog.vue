@@ -8,7 +8,7 @@
       <div class="xc-dialog-wrapper">
         <div class="xc-dialog">
           <header>
-            <slot name="header" />
+            <slot name="title" />
             <span
               class="xc-dialog-close"
               @click="close"
@@ -74,9 +74,8 @@ export default {
       }
     };
     const cancel = () => {
-      if(props.cancel?.() !== false) {
-        close();
-      }
+      props.cancel?.();
+      close();
     };
     return {
       close,

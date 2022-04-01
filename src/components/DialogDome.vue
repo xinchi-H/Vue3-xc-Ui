@@ -7,11 +7,11 @@
     toggle
   </Button>
   <Dialog
-    v-model:visible="x"
+    v-model:visible="dialog1Visible"
     :ok="f1"
     :cancel="f2"
   >
-    <template v-slot:header>
+    <template v-slot:title>
       <strong>提示</strong>
     </template>
     <template v-slot:content>
@@ -28,7 +28,8 @@
 </template>
 
 <script lang="ts">
-import { ref } from "vue";
+import { ref, h } from "vue";
+import { openDialog } from "../lib/openDialog";
 import Dialog from "../lib/dialog.vue";
 import Button from "../lib/button.vue";
 
@@ -38,9 +39,9 @@ export default {
     Dialog,
   },
   setup() {
-    const x = ref(false);
+    const dialog1Visible = ref(false);
     const toggle = () => {
-      x.value = !x.value;
+      dialog1Visible.value = !dialog1Visible.value;
     };
     const f1 = () => {
       console.log(1111);
@@ -50,19 +51,26 @@ export default {
       console.log(2222);
     };
     const showDialog =() => {
-      // openDialog({
-      //   title: '标题',
-      //   content: '你好',
-      // })
+      openDialog({
+        title: h('strong', {}, '标题'),
+        content: '你好',
+        ok() {
+          console.log('ok')
+        },
+        cancel() {
+          console.log('cancel')
+        },
+        closeOnClickOverlay: true,
+      })
     };
     return {
-      x,
+      dialog1Visible,
       toggle,
       f1,
       f2,
       showDialog,
     };
-  }
+  },
 }
 </script>
 
