@@ -28,12 +28,16 @@
 </template>
 
 <script lang="ts">
+/**
+ * Dialog示例
+ */
 import { ref, h } from "vue";
 import { openDialog } from "../lib/openDialog";
 import Dialog from "../lib/Dialog.vue";
 import Button from "../lib/Button.vue";
 
 export default {
+  name: 'DialogDemo',
   components: {
     Button,
     Dialog,

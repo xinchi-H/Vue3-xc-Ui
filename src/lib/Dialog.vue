@@ -39,6 +39,7 @@
 import Button from "./Button.vue";
 
 export default {
+  name: "Dialog",
   props: {
     visible: {
       type: Boolean,

@@ -27,10 +27,14 @@
 </template>
 
 <script lang="ts">
+/**
+ * Doc组件
+ */
 import { inject, Ref } from "vue";
 import Topnav from "../components/Topnav.vue";
 
 export default {
+  name: 'Doc',
   components: {Topnav},
   setup() {
     const menuVisible = inject<Ref<boolean>>('menuVisible')

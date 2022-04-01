@@ -7,10 +7,14 @@
 </template>
 
 <script lang="ts">
+/**
+ * Switch示例
+ */
 import { ref } from "vue";
 import Switch from "../lib/Switch.vue";
 
 export default {
+  name: 'SwitchDemo',
   components: { Switch },
   setup() {
     const bool = ref(false);

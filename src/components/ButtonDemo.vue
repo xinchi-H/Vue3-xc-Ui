@@ -57,9 +57,13 @@
 </template>
 
 <script lang="ts">
+/**
+ * Button示例
+ */
 import Button from "../lib/Button.vue";
 
  export default {
+   name: 'ButtonDemo',
    components: {
      Button,
    },

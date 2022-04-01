@@ -13,9 +13,13 @@
 </template>
 
 <script lang="ts">
+/**
+ * Topnav组件
+ */
 import { inject, Ref } from "vue"
 
 export default {
+  name: "Topnav",
   setup() {
     const menuVisible = inject<Ref<boolean>>('menuVisible');
 

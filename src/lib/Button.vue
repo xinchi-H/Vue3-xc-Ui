@@ -13,8 +13,12 @@
 </template>
 
 <script lang="ts">
+/**
+ * Button组件
+ */
 import { computed } from 'vue';
 export default {
+  name: "Button",
   props: {
     theme: {
       type: String,

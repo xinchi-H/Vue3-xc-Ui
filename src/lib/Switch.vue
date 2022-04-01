@@ -10,10 +10,11 @@
 
 <script lang="ts">
 /**
- * Switch 组件
+ * Switch组件
  */
 
 export default {
+  name: "Switch",
   props: {
     value: Boolean,
   },
