@@ -82,8 +82,7 @@ aside {
   left: 0;
   width: 150px;
   height: 100%;
-  padding: 16px;
-  padding-top: 70px;
+  padding: 70px 16px 16px;
   background: lightblue;
 
   > h2 {
