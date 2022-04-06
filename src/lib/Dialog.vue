@@ -45,6 +45,7 @@ export default {
       type: Boolean,
       default: false,
     },
+    // 是否点击遮罩层关闭
     closeOnClickOverlay: {
       type: Boolean,
       default: false,

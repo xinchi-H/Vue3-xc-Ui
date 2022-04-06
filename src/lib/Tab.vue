@@ -1,15 +1,15 @@
 <template>
   <div>
-    Tabs组件
+    Tab组件
   </div>
 </template>
 
 <script>
 /**
- * Tabs组件
+ * Tab组件
  */
 export default {
-  name: "Tabs"
+  name: "Tab"
 }
 </script>
 
