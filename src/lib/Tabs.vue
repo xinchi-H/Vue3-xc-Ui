@@ -5,6 +5,7 @@
     >
       <div
         class="xc-tabs-nav-item"
+        :class="{selected: title === selected}"
         v-for="(title, index) in titles"
         :key="index"
       >
@@ -30,6 +31,11 @@ import Tab from "./Tab.vue";
 
 export default {
   name: "Tabs",
+  props: {
+    selected: {
+      type: String,
+    },
+  },
   setup(props, context) {
     const defaults = context.slots.default();
     defaults.forEach((tag) => {
