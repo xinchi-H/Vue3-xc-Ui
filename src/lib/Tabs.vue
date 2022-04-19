@@ -14,10 +14,11 @@
       </div>
     </div>
     <div class="xc-tabs-content">
-      {{ current }}
       <component
+        v-for="c in defaults"
+        :is="c"
         class="xc-tabs-content-item"
-        :is="current"
+        :class="{selected: c.props.title === selected}"
       />
     </div>
   </div>
@@ -27,7 +28,6 @@
 /**
  * Tabs组件
  */
-import { computed } from 'vue';
 import Tab from "./Tab.vue";
 
 export default {
@@ -50,12 +50,6 @@ export default {
       tag.props.title
     );
 
-    const current = computed(() =>
-      defaults.filter((tag) =>
-        tag.props.title === props.selected
-      )[0]
-    )
-
     const select = (title: string) => {
       context.emit('update:selected', title);
     }
@@ -64,13 +58,12 @@ export default {
       defaults,
       titles,
       select,
-      current,
     };
   },
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 $blue: #40a9ff;
 $color: #333;
 $border-color: #d9d9d9;
@@ -97,6 +90,14 @@ $border-color: #d9d9d9;
 
   &-content {
      padding: 8px 0;
+
+    &-item {
+      display: none;
+
+      &.selected {
+        display: block;
+      }
+    }
   }
 }
 </style>

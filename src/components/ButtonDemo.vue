@@ -75,7 +75,3 @@ import Button from "../lib/Button.vue";
    },
  };
 </script>
-
-<style lang="scss" scoped>
-
-</style>
