@@ -8,25 +8,26 @@
         :class="{selected: title === selected}"
         v-for="(title, index) in titles"
         :key="index"
+        @click="select(title)"
       >
         {{ title }}
       </div>
     </div>
     <div class="xc-tabs-content">
+      {{ current }}
       <component
         class="xc-tabs-content-item"
-        v-for="(c, index) in defaults"
-        :key="index"
-        :is="c"
+        :is="current"
       />
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 /**
  * Tabs组件
  */
+import { computed } from 'vue';
 import Tab from "./Tab.vue";
 
 export default {
@@ -38,19 +39,34 @@ export default {
   },
   setup(props, context) {
     const defaults = context.slots.default();
+
     defaults.forEach((tag) => {
       if(tag.type !== Tab) {
         throw new Error('Tabs 子标签必须是 Tab');
       }
     });
+
     const titles = defaults.map((tag) =>
       tag.props.title
+    );
+
+    const current = computed(() =>
+      defaults.filter((tag) =>
+        tag.props.title === props.selected
+      )[0]
     )
+
+    const select = (title: string) => {
+      context.emit('update:selected', title);
+    }
+
     return {
       defaults,
       titles,
-    }
-  }
+      select,
+      current,
+    };
+  },
 }
 </script>
 
