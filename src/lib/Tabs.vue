@@ -8,11 +8,15 @@
         :class="{selected: title === selected}"
         v-for="(title, index) in titles"
         :key="index"
+        :ref="el => {if(el) navItems[index] = el}"
         @click="select(title)"
       >
         {{ title }}
       </div>
-      <div class="xc-tabs-nav-indicator" />
+      <div
+        class="xc-tabs-nav-indicator"
+        ref="indicator"
+      />
     </div>
     <div class="xc-tabs-content">
       <component
@@ -29,7 +33,13 @@
 /**
  * Tabs组件
  */
+import {
+  ref,
+  onMounted,
+  computed,
+} from 'vue';
 import Tab from "./Tab.vue";
+import dialog from "./Dialog.vue";
 
 export default {
   name: "Tabs",
@@ -51,6 +61,23 @@ export default {
       tag.props.title
     );
 
+    const navItems = ref<HTMLDivElement[]>([]);
+    const indicator = ref<HTMLDivElement>(null);
+    onMounted(() => {
+      const divs = navItems.value;
+      const result = divs.filter(div =>
+        div.classList.contains('selected')
+      )[0];
+      const { width } = result.getBoundingClientRect();
+      indicator.value.style.width = width + 'px';
+    })
+
+    const current = computed(() => {
+      return defaults.filter((tag) => {
+        return tag.props.title === props.selected
+      })[0]
+    })
+
     const select = (title: string) => {
       context.emit('update:selected', title);
     }
@@ -58,6 +85,9 @@ export default {
     return {
       defaults,
       titles,
+      navItems,
+      indicator,
+      current,
       select,
     };
   },
