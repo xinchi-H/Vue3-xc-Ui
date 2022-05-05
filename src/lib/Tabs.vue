@@ -2,6 +2,7 @@
   <div class="xc-tabs">
     <div
       class="xc-tabs-nav"
+      ref="container"
     >
       <div
         class="xc-tabs-nav-item"
@@ -36,10 +37,9 @@
 import {
   ref,
   onMounted,
-  computed,
+  onUpdated,
 } from 'vue';
 import Tab from "./Tab.vue";
-import dialog from "./Dialog.vue";
 
 export default {
   name: "Tabs",
@@ -50,32 +50,37 @@ export default {
   },
   setup(props, context) {
     const defaults = context.slots.default();
-
     defaults.forEach((tag) => {
       if(tag.type !== Tab) {
         throw new Error('Tabs 子标签必须是 Tab');
       }
     });
-
     const titles = defaults.map((tag) =>
       tag.props.title
     );
 
     const navItems = ref<HTMLDivElement[]>([]);
     const indicator = ref<HTMLDivElement>(null);
-    onMounted(() => {
+    // 标题的容器
+    const container = ref<HTMLDivElement>(null);
+
+    const changeIndicatorStyle = () => {
       const divs = navItems.value;
       const result = divs.filter(div =>
         div.classList.contains('selected')
       )[0];
-      const { width } = result.getBoundingClientRect();
+      const { width, left: left2 } = result.getBoundingClientRect();
       indicator.value.style.width = width + 'px';
+      const { left: left1 } = container.value.getBoundingClientRect();
+      indicator.value.style.left = left2 - left1 + 'px';
+    }
+
+    onMounted(() => {
+      changeIndicatorStyle();
     })
 
-    const current = computed(() => {
-      return defaults.filter((tag) => {
-        return tag.props.title === props.selected
-      })[0]
+    onUpdated(() => {
+      changeIndicatorStyle();
     })
 
     const select = (title: string) => {
@@ -87,7 +92,7 @@ export default {
       titles,
       navItems,
       indicator,
-      current,
+      container,
       select,
     };
   },
@@ -121,11 +126,12 @@ $border-color: #d9d9d9;
 
     &-indicator {
       position: absolute;
-      height: 3px;
-      background: $blue;
       left: 0;
       bottom: -1px;
+      height: 3px;
       width: 100px;
+      background: $blue;
+      transition: all 250ms;
     }
   }
 
