@@ -9,7 +9,7 @@
         :class="{selected: title === selected}"
         v-for="(title, index) in titles"
         :key="index"
-        :ref="el => {if(el) navItems[index] = el}"
+        :ref="el => {if(title === selected) selectedItem = el}"
         @click="select(title)"
       >
         {{ title }}
@@ -59,29 +59,20 @@ export default {
       tag.props.title
     );
 
-    const navItems = ref<HTMLDivElement[]>([]);
+    const selectedItem = ref<HTMLDivElement>(null);
     const indicator = ref<HTMLDivElement>(null);
     // 标题的容器
     const container = ref<HTMLDivElement>(null);
 
     const changeIndicatorStyle = () => {
-      const divs = navItems.value;
-      const result = divs.filter(div =>
-        div.classList.contains('selected')
-      )[0];
-      const { width, left: left2 } = result.getBoundingClientRect();
+      const { width, left: left2 } = selectedItem.value.getBoundingClientRect();
       indicator.value.style.width = width + 'px';
       const { left: left1 } = container.value.getBoundingClientRect();
       indicator.value.style.left = left2 - left1 + 'px';
     }
 
-    onMounted(() => {
-      changeIndicatorStyle();
-    })
-
-    onUpdated(() => {
-      changeIndicatorStyle();
-    })
+    onMounted(changeIndicatorStyle)
+    onUpdated(changeIndicatorStyle)
 
     const select = (title: string) => {
       context.emit('update:selected', title);
@@ -90,7 +81,7 @@ export default {
     return {
       defaults,
       titles,
-      navItems,
+      selectedItem,
       indicator,
       container,
       select,
