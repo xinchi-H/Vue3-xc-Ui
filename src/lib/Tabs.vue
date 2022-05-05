@@ -37,7 +37,7 @@
 import {
   ref,
   onMounted,
-  onUpdated,
+  watchEffect,
 } from 'vue';
 import Tab from "./Tab.vue";
 
@@ -71,8 +71,9 @@ export default {
       indicator.value.style.left = left2 - left1 + 'px';
     }
 
-    onMounted(changeIndicatorStyle)
-    onUpdated(changeIndicatorStyle)
+    onMounted( () => {
+      watchEffect(changeIndicatorStyle)
+    })
 
     const select = (title: string) => {
       context.emit('update:selected', title);
