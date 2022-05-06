@@ -20,12 +20,7 @@
       />
     </div>
     <div class="xc-tabs-content">
-      <component
-        v-for="c in defaults"
-        :is="c"
-        class="xc-tabs-content-item"
-        :class="{selected: c.props.title === selected}"
-      />
+      <component :is="current" :key="current.props.title"/>
     </div>
   </div>
 </template>
@@ -38,6 +33,7 @@ import {
   ref,
   onMounted,
   watchEffect,
+  computed,
 } from 'vue';
 import Tab from "./Tab.vue";
 
@@ -75,6 +71,10 @@ export default {
       watchEffect(changeIndicatorStyle)
     })
 
+    const current = computed(()=> {
+      return  defaults.find((i)=> i.props.title === props.selected)
+    })
+
     const select = (title: string) => {
       context.emit('update:selected', title);
     }
@@ -85,6 +85,7 @@ export default {
       selectedItem,
       indicator,
       container,
+      current,
       select,
     };
   },
@@ -129,14 +130,6 @@ $border-color: #d9d9d9;
 
   &-content {
      padding: 8px 0;
-
-    &-item {
-      display: none;
-
-      &.selected {
-        display: block;
-      }
-    }
   }
 }
 </style>
