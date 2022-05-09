@@ -43,7 +43,6 @@ export default {
   justify-content: center;
   align-items: center;
   z-index: 10;
-  background: pink;
 
   > .logo {
     max-width: 6em;
