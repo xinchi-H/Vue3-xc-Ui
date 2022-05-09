@@ -28,6 +28,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$green: #02bcb0;
+$border-radius: 4px;
+$color: #007974;
+
 .top-nav-and-banner {
   background: linear-gradient(145deg, rgba(227, 255, 253, 1) 0%, rgba(183, 233, 230, 1) 100%);
 
@@ -37,18 +41,21 @@ export default {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    color: $color;
 
     > .actions{
       padding: 8px 0;
+
       a {
-        margin:0 8px;
-        background: #fff;
         display: inline-block;
-        $h: 28px;
-        height: $h;
-        line-height: $h;
-        border-radius: $h/2;
-        padding: 0 8px;
+        margin:0 8px;
+        padding: 8px 24px;
+        border-radius: $border-radius;
+        color: white;
+        background: $green;
+        &:hover {
+          text-decoration: none;
+        }
       }
     }
   }

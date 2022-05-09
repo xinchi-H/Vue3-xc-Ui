@@ -33,15 +33,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$color: #007974;
+
 .topnav {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  padding: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  padding: 16px;
+  color: $color;
   z-index: 10;
 
   > .logo {
