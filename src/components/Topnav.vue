@@ -1,6 +1,10 @@
 <template>
   <div class="topnav">
-    <div class="logo">LOGO</div>
+    <div class="logo">
+      <svg class="icon">
+        <use xlink:href="#icon-xc"></use>
+      </svg>
+    </div>
     <ul class="menu">
       <li>菜单1</li>
       <li>菜单2</li>
@@ -49,8 +53,20 @@ $color: #007974;
 
   > .logo {
     max-width: 6em;
+    height: 28px;
     margin-right: auto;
+    transform: rotate(0deg) scale(1);
+    transition: all cubic-bezier(0.22, 0.58, 0.12, 0.98) 0.4s;
+    &:hover {
+      transform:  rotate(180deg) scale(1.1);
+    }
+
+    > svg {
+      width: 28px;
+      height: 28px;
+    }
   }
+
   > .menu {
     display: flex;
     flex-wrap: nowrap;
