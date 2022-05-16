@@ -11,9 +11,3 @@
     </p>
   </article>
 </template>
-
-<script setup>
-/**
- * 安装
- */
-</script>
