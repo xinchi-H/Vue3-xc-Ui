@@ -1,6 +1,7 @@
 import './lib/xc.scss';
 import './index.scss';
 import 'github-markdown-css';
+import './lib/svg.js'
 import { createApp } from 'vue';
 import { router } from './router';
 import App from './App.vue';
