@@ -50,6 +50,7 @@ $h2: $h - 4px;
     border-radius: $h2 / 2;
     transition: all 250ms;
   }
+
   &.xc-checked {
     background: #1890ff;
     
