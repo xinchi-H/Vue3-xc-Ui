@@ -65,6 +65,14 @@ export default {
 
   > .nav {
     flex-shrink: 0;
+
+    @media (max-width: 500px) {
+      background: linear-gradient(
+          145deg,
+          rgba(227, 255, 253, 1) 0%,
+          rgba(183, 233, 230, 1) 100%
+      );
+    }
   }
   
   > .content {
