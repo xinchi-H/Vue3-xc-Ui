@@ -1,4 +1,6 @@
 // @ts-nocheck
+// 有ts语法错误不用报错
+// 因为node版本较低时，在js文件用新语法（import和?.）会不支持，改成ts文件，esbuild会自动把ts转成旧语法
 import path from 'path'
 import fs from 'fs'
 import marked from 'marked'
