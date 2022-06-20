@@ -9,6 +9,6 @@
  * Tab组件
  */
 export default {
-  name: "Tab"
+  name: "XCTab"
 }
 </script>
