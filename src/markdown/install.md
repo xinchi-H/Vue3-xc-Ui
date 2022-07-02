@@ -3,13 +3,13 @@
 打开终端运行下列命令：
 
 ```
-npm install xc-ui
+npm install xc-vue3-ui
 ```
 
 或
 
 ```
-yarn add xc-ui
+yarn add xc-vue3-ui
 ```
 
 下一节：[开始使用](#/doc/get-started)
