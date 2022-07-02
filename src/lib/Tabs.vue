@@ -68,7 +68,7 @@ export default {
     }
 
     onMounted( () => {
-      watchEffect(changeIndicatorStyle)
+      watchEffect(changeIndicatorStyle, {flush: 'post'})
     })
 
     const current = computed(()=> {
